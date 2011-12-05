@@ -1,6 +1,8 @@
 package com.google.code.geocoder.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -21,4 +23,22 @@ public class GeocoderResult implements Serializable {
 	private List<GeocoderAddressComponent> addressComponents;
 	private GeocoderGeometry geometry;
 	private boolean partialMatch;
+
+	/**
+	 * Safely converts the types into enums.
+	 */
+	public List<GeocoderResultType> getGeocoderResultTypes() {
+		if (types != null) {
+			List<GeocoderResultType> rts = new ArrayList<GeocoderResultType>();
+			for (String type : types) {
+				GeocoderResultType t = GeocoderResultType.fromValue(type);
+				if (t != null)
+					rts.add(t);
+			}
+			return rts;
+		} else {
+			return Collections.emptyList();
+		}
+	}
+
 }
