@@ -12,10 +12,10 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -27,9 +27,8 @@ import com.google.code.geocoder.model.LatLngBounds;
 /**
  * @author <a href="mailto:panchmp@gmail.com">Michael Panchenko</a>
  */
+@Slf4j
 public class Geocoder {
-	private static Log log = LogFactory.getLog(Geocoder.class);
-
 	private static final String GEOCODE_REQUEST_SERVER_HTTP = "http://maps.googleapis.com";
 	private static final String GEOCODE_REQUEST_SERVER_HTTPS = "https://maps.googleapis.com";
 	private static final String GEOCODE_REQUEST_QUERY_BASIC = "/maps/api/geocode/json?sensor=false";
@@ -83,7 +82,7 @@ public class Geocoder {
 
 	protected String getURL(final GeocoderRequest geocoderRequest) throws UnsupportedEncodingException {
 		if (log.isTraceEnabled()) {
-			log.trace(geocoderRequest);
+			log.trace(geocoderRequest.toString());
 		}
 		final StringBuilder url = getURLQuery(geocoderRequest);
 
