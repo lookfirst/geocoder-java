@@ -36,7 +36,8 @@ public class GeocoderResult implements Serializable {
 				try {
 					rts.add(GeocoderResultType.fromValue(type));
 				} catch (IllegalArgumentException e) {
-					log.debug("Missing enum: " + type);
+					if (log.isDebugEnabled())
+						log.debug("Missing enum: " + type);
 				}
 			}
 			return rts;
