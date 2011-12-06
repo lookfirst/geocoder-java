@@ -28,10 +28,11 @@ public enum GeocoderResultType {
 	STREET_NUMBER("street_number"),
 	FLOOR("floor"),
 	ROOM("room"),
-	BUS_STATION("bus_station"),  // undocumented
-	TRANSIT_STATION("transit_station"),  // undocumented
-	AIRPORT_STATION("airport_station"),   // undocumented
-	RAIL_STATION("rail_station");  // undocumented
+	BUS_STATION("bus_station"),
+	TRANSIT_STATION("transit_station"),
+	AIRPORT_STATION("airport_station"),
+	RAIL_STATION("rail_station"),
+	AQUARIUM("aquarium");
 
 	private final String value;
 
